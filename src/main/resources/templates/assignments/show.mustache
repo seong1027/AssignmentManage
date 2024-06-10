@@ -1,0 +1,64 @@
+{{#user}}
+{{>layouts/header}}
+
+{{#assignment}}
+<table class="table">
+    <tbody>
+    <tr>
+        <th>title</th>
+        <td>{{title}}</td>
+    </tr>
+    <tr>
+        <th>date</th>
+        <td>{{date}}</td>
+    </tr>
+    <tr>
+        <th>content</th>
+        <td>{{content}}</td>
+    </tr>
+
+    </tbody>
+</table>
+
+{{#isProfessor}}
+    <a href="/assignments/{{assignment.id}}/edit" class="btn btn-primary">과제 수정하기</a>
+{{/isProfessor}}
+
+{{^isProfessor}}
+    <a href="/assignments/{{assignment.id}}/submission" class="btn btn-primary">과제 제출하기</a>
+{{/isProfessor}}
+
+<a href="/assignments">과제 목록 보기</a>
+
+{{#isProfessor}}
+    <a href="/assignments/{{assignment.id}}/eval" class="btn btn-primary">과제 평가하기</a>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        과제 삭제하기
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">과제 삭제</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    정말로 과제를 삭제하시겠습니까?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
+                    <a href="/assignments/{{assignment.id}}/delete" class="btn btn-primary">과제 삭제하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{/isProfessor}}
+
+{{/assignment}}
+{{>layouts/footer}}
+{{/user}}

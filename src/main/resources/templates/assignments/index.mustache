@@ -1,0 +1,32 @@
+{{#user}}
+{{>layouts/header}}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">제목</th>
+        <th scope="col">마감일</th>
+        <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {{#assignmentList}} <!-- 묶음일때 반복 실행 -->
+        <tr>
+            <td><a href="/assignments/{{id}}">{{title}}</a></td>
+            <td>{{date}}</td>
+            <td>{{content}}</td>
+        </tr>
+    {{/assignmentList}}
+
+    </tbody>
+</table>
+
+{{#isProfessor}}
+    <a href="/assignments/new" class="btn btn-primary">과제 생성</a>
+{{/isProfessor}}
+
+
+{{>layouts/footer}}
+{{/user}}

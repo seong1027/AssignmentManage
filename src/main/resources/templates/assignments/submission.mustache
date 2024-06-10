@@ -1,0 +1,49 @@
+{{#user}}
+{{>layouts/header}}
+
+{{#assignment}}
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>id</th>
+            <td>{{id}}</td>
+        </tr>
+        <tr>
+            <th>title</th>
+            <td>{{title}}</td>
+        </tr>
+        <tr>
+            <th>date</th>
+            <td>{{date}}</td>
+        </tr>
+        <tr>
+            <th>content</th>
+            <td>{{content}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+<form class="container" action="/submission" method="post">
+
+    <input type="hidden" name="assignmentId" value="{{assignment.id}}">
+    <input type="hidden" name="studentId" value="{{user.id}}">
+    <input type="hidden" name="studentName" value="{{user.name}}">
+    <input type="hidden" name="score" value="0">
+
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="content" style="height: 100px"></textarea>
+        <label for="floatingTextarea2">Comments</label>
+    </div>
+
+    <div class="mb-3">
+        <label for="formFile" class="form-label">file input</label>
+        <input class="form-control" type="file" id="formFile" name="file">
+    </div>
+
+    <button type="submit" class="btn btn-primary">과제 제출 완료</button>
+    <a href="/assignments">뒤로 가기</a>
+</form>
+
+{{/assignment}}
+{{>layouts/footer}}
+{{/user}}

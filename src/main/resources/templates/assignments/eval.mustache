@@ -1,0 +1,55 @@
+{{#user}}
+    {{>layouts/header}}
+
+    {{#assignment}}
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>title</th>
+                <td>{{title}}</td>
+            </tr>
+            <tr>
+                <th>date</th>
+                <td>{{date}}</td>
+            </tr>
+            <tr>
+                <th>content</th>
+                <td>{{content}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <form class="container" action="/evalComplete" method="post">
+
+            <input type="hidden" name="id" value="{{submission.id}}">
+            <input type="hidden" name="date" value="{{submission.date}}">
+            <input type="hidden" name="assignmentId" value="{{assignment.id}}">
+            <input type="hidden" name="studentId" value="{{submission.studentId}}">
+            <input type="hidden" name="studentName" value="{{submission.studentName}}">
+
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="content" style="height: 100px" readonly>
+                    {{submission.content}}
+                </textarea>
+                <label for="floatingTextarea2">Comments</label>
+            </div>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">file input</label>
+                <input class="form-control" type="file" id="formFile" name="file" disabled>
+            </div>
+
+            <a href="/assignments/{{assignment.id}}">뒤로 가기</a>
+            <div class="col-auto">
+                <label for="inputPassword2" class="visually-hidden">score</label>
+                <input type="number" class="form-control" name="score">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">점수 부여</button>
+            </div>
+
+        </form>
+
+    {{/assignment}}
+    {{>layouts/footer}}
+{{/user}}

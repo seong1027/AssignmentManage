@@ -1,0 +1,24 @@
+{{#user}}
+{{>layouts/header}}
+
+<form class="container" action="/assignments/create" method="post">
+    <div class="mb-3">
+        <label class="form-label">제목</label>
+        <input type="text" class="form-control" name="title">
+    </div>
+    <div>
+        <label for="date"> 마감일:
+            <input type="datetime-local" class="form-control" name="date"
+                   max="2077-06-20T23:59" min="1977-06-05T00:00" value="2024-06-07T00:00">
+        </label>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">내용</label>
+        <textarea class="form-control" rows="3" name="content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">과제 등록</button>
+    <a href="/assignments">취소</a>
+</form>
+
+{{>layouts/footer}}
+{{/user}}

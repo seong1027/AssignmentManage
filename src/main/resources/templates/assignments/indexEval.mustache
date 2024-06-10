@@ -1,0 +1,28 @@
+{{#user}}
+    {{>layouts/header}}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">이름</th>
+        <th scope="col">제출일</th>
+        <th scope="col">점수</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {{#submissionList}} <!-- 묶음일때 반복 실행 -->
+    <tr>
+        <td><a href="/assignments/{{assignmentId}}/eval/{{id}}">{{studentName}}</a></td>
+        <td>{{date}}</td>
+        <td>{{score}}</td>
+    </tr>
+    {{/submissionList}}
+
+    </tbody>
+</table>
+
+    <a href="/assignments">뒤로 가기</a>
+
+    {{>layouts/footer}}
+{{/user}}
